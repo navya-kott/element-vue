@@ -17,7 +17,7 @@
 
         <div class="col-md-6 ">
             <div class="d-flex justify-content-center align-item-center"> <img
-                    src="../assets/elementfleet_leftimagerighthexcarddesktop.jpg" class="w-75" alt="...">
+                    src="../assets/elementfleet_leftimagerighthexcarddesktop.jpg" class="w-100" alt="...">
             </div>
         </div>
     </div>

@@ -14,7 +14,12 @@ const router = createRouter({
       path: "/resource",
       name: "resource",
       component: ResourceView
-    }
+    },
+  // {
+  //     path: "/about",
+  //     name: "about",
+  //     component: AboutView
+  //   }
 
   ],
 })
