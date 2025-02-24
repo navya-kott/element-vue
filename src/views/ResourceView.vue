@@ -5,20 +5,14 @@ import ResourceCardComponent from '@/components/ResourceCardComponent.vue';
 <template>
 
     <div class="row mt-5">
-        <div class="col-6">
+        <div class="col-12">
             <p class="resource-section"> Latest news and resources </p>
-        </div>
-
-        <div class="col-6 ">
-            <div class="d-flex justify-content-end">
-                <a class="link-secondary ">See more </a>
-            </div>
         </div>
 
     </div>
 
     <div class="row mt-3">
-        <ResourceCardComponent imgUrl="../src/assets/res2.jpg"
+        <ResourceCardComponent img-url="../src/assets/res2.jpg"
             content="Safety tips for driving on icy roads without any fail" />
         <ResourceCardComponent imgUrl="../src/assets/res3.jpg"
             content="Reducing fleet downtime: Digital tools and strategies webinar" />

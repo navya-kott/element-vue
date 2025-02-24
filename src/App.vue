@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import BrandsDropdownComponent from './components/BrandsDropdownComponent.vue';
+import { onMounted, ref } from 'vue';
+import { Toast } from 'bootstrap';
+
 const router = useRouter()
 
 const goResource = () => {
@@ -10,6 +13,24 @@ const goResource = () => {
 const goHome = () => {
     router.push({ name: "home" })
 }
+
+const toastElement = ref<HTMLElement | null>(null);
+let toastInstance: Toast | null = null;
+
+onMounted(() => {
+    if (toastElement.value) {
+        toastInstance = new Toast(toastElement.value);
+    }
+});
+
+const showToast = () => {
+    toastInstance?.show();
+};
+
+const handleSubmit = (event: Event) => {
+    event.preventDefault(); 
+    showToast();
+};
 </script>
 
 <template>
@@ -34,7 +55,7 @@ const goHome = () => {
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,7 +78,7 @@ const goHome = () => {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-5">
 
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" novalidate  @submit="handleSubmit">
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -71,21 +92,11 @@ const goHome = () => {
                         Please provide a valid data.
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mobile</label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" required>
+                        <label for="exampleInputPassword1" class="form-label">Message</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required>
-                    </div>
-
-                    <div class="mb-3 form-check ms-1">
-                        <a id="checkOutButton" data-bs-toggle="modal" data-bs-target="#termsModal"
-                            data-bs-dismiss="modal">Check our terms and conditions
-                            here</a><br>
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button  class="btn btn-success" id="liveToastBtn" data-bs-dismiss="modal">Submit</button>
                 </form>
 
             </div>
@@ -135,10 +146,18 @@ const goHome = () => {
             </div>
         </div>
     </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-5 ">
+                    <div id="liveToast" class="toast" ref="toastElement" role="alert" aria-live="assertive"
+                        aria-atomic="true">
+                        <div class="toast-body">We will ping you soon :)</div>
+                    </div>
+                </div>
     <RouterView />
 </template>
 
-<style>
+<style scoped>
+
 .modal-content {
     background: rgba(8, 83, 54, 0.9);
 }
@@ -146,4 +165,10 @@ const goHome = () => {
 .modal-content div {
     color: #bdddda;
 }
+
+.toast-body{
+    color:  rgba(241, 241, 241, 0.9);
+    background-color: rgb(13, 101, 112);
+}
+
 </style>

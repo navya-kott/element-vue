@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 
+const router=useRouter()
+
+const goServices = () => {
+    router.push({
+        name: "service"
+    })
+}
 </script>
 
 <template>
@@ -23,7 +31,7 @@
     </div>
 
     <div class="find-more">
-        <button type="button" class="btn btn-success  btn-lg">Find out more</button>
+        <button type="button" class="btn btn-success  btn-lg" @click="goServices">Find out more</button>
     </div>
 
 </template>
