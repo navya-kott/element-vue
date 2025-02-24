@@ -27,8 +27,9 @@ const showToast = () => {
     toastInstance?.show();
 };
 
-const handleSubmit = (event: Event) => {
-    event.preventDefault(); 
+
+const handleSignup = (event: Event) => {
+    event.preventDefault();
     showToast();
 };
 </script>
@@ -47,7 +48,7 @@ const handleSubmit = (event: Event) => {
         <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
             <ul class="navbar-nav d-flex w-100 flex-column flex-lg-row justify-content-center justify-content-lg-start">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#" @click="goHome">Home</a>
+                    <a class="nav-link active" href="#" @click="goHome">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" @click="goResource">Resource</a>
@@ -64,9 +65,13 @@ const handleSubmit = (event: Event) => {
                     <BrandsDropdownComponent />
                 </li>
 
-                <li class="ms-lg-auto">
+                <li class="nav-item">
                     <button type="button" class="btn btn-success btn-sm" data-bs-target="#contactModal"
                         data-bs-toggle="modal">Contact us</button>
+                </li>
+                <li class="ms-lg-auto mt-1">
+                    <button type="button" class="btn btn-success btn-sm" data-bs-target="#signupModal"
+                        data-bs-toggle="modal">Signup</button>
                 </li>
             </ul>
 
@@ -74,11 +79,47 @@ const handleSubmit = (event: Event) => {
 
 
     </nav>
+    <!-- signup -->
+
+    <div class="modal fade" tabindex="-1" id="signupModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-5">
+
+                <form class="needs-validation" novalidate @submit="handleSignup">
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            required>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid data.
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mobile</label>
+                        <input type="tel" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" required>
+                    </div>
+
+                    <button class="btn btn-success" id="signupToast" data-bs-dismiss="modal">Signup</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
     <div class="modal fade" tabindex="-1" id="contactModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-5">
 
-                <form class="needs-validation" novalidate  @submit="handleSubmit">
+                <form class="needs-validation" novalidate>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -96,68 +137,37 @@ const handleSubmit = (event: Event) => {
                         <input type="text" class="form-control" id="exampleInputPassword1" required>
                     </div>
 
-                    <button  class="btn btn-success" id="liveToastBtn" data-bs-dismiss="modal">Submit</button>
+                    <button class="btn btn-success" id="exampleModal" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Submit</button>
                 </form>
 
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="termsModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content p-5">
-                <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalToggleLabel2">Terms and conditions</h2>
-                </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
                 <div class="modal-body">
-                    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0"
-                        class="scrollspy-example" tabindex="0">
-                        <h4 id="scrollspyHeading1">First heading</h4>
-                        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the
-                            page, the appropriate navigation link is highlighted. It's repeated throughout the component
-                            example. We keep adding some more example copy here to emphasize the scrolling and
-                            highlighting.</p>
-                        <h4 id="scrollspyHeading2">Second heading</h4>
-                        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the
-                            page, the appropriate navigation link is highlighted. It's repeated throughout the component
-                            example. We keep adding some more example copy here to emphasize the scrolling and
-                            highlighting.</p>
-                        <h4 id="scrollspyHeading3">Third heading</h4>
-                        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the
-                            page, the appropriate navigation link is highlighted. It's repeated throughout the component
-                            example. We keep adding some more example copy here to emphasize the scrolling and
-                            highlighting.</p>
-                        <h4 id="scrollspyHeading4">Fourth heading</h4>
-                        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the
-                            page, the appropriate navigation link is highlighted. It's repeated throughout the component
-                            example. We keep adding some more example copy here to emphasize the scrolling and
-                            highlighting.</p>
-                        <h4 id="scrollspyHeading5">Fifth heading</h4>
-                        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the
-                            page, the appropriate navigation link is highlighted. It's repeated throughout the component
-                            example. We keep adding some more example copy here to emphasize the scrolling and
-                            highlighting.</p>
-                    </div>
+                    We will ping you soon
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-success" id="backButton" data-bs-target="#contactModal"
-                        data-bs-toggle="modal" aria-label="Close" data-bs-dismiss="modal">Back to first</button>
-                </div>
+                >
             </div>
         </div>
     </div>
 
+
     <div class="toast-container position-fixed bottom-0 end-0 p-5 ">
-                    <div id="liveToast" class="toast" ref="toastElement" role="alert" aria-live="assertive"
-                        aria-atomic="true">
-                        <div class="toast-body">We will ping you soon :)</div>
-                    </div>
-                </div>
+        <div id="signupToast" class="toast" ref="toastElement" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">Welcome to the Element :)</div>
+        </div>
+    </div>
+
     <RouterView />
 </template>
 
 <style scoped>
-
 .modal-content {
     background: rgba(8, 83, 54, 0.9);
 }
@@ -166,9 +176,8 @@ const handleSubmit = (event: Event) => {
     color: #bdddda;
 }
 
-.toast-body{
-    color:  rgba(241, 241, 241, 0.9);
+.toast-body {
+    color: rgba(241, 241, 241, 0.9);
     background-color: rgb(13, 101, 112);
 }
-
 </style>
