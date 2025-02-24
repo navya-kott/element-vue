@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import BrandsDropdownComponent from './components/BrandsDropdownComponent.vue';
 const router = useRouter()
 
 const goResource = () => {
     router.push({ name: "resource" })
 }
 
-const goHome=()=>{
-    router.push({name:"home"})
+const goHome = () => {
+    router.push({ name: "home" })
 }
 </script>
 
@@ -33,14 +34,15 @@ const goHome=()=>{
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Brands
                     </a>
-                    <ul class="dropdown-menu" id="menu">
-                    </ul>
+                    <BrandsDropdownComponent />
                 </li>
+
                 <li class="ms-lg-auto">
                     <button type="button" class="btn btn-success btn-sm" data-bs-target="#contactModal"
                         data-bs-toggle="modal">Contact us</button>
@@ -138,7 +140,10 @@ const goHome=()=>{
 
 <style>
 .modal-content {
-  background: rgba(8, 83, 54, 0.9);
+    background: rgba(8, 83, 54, 0.9);
 }
+
 .modal-content div {
-color: #bdddda;}</style>
+    color: #bdddda;
+}
+</style>
