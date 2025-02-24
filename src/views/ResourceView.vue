@@ -18,14 +18,12 @@ import ResourceCardComponent from '@/components/ResourceCardComponent.vue';
     </div>
 
     <div class="row mt-3">
-
-        <ResourceCardComponent imgUrl="../assets/res3.jpg"
+        <ResourceCardComponent imgUrl="../src/assets/res2.jpg"
             content="Safety tips for driving on icy roads without any fail" />
-        <ResourceCardComponent imgUrl="@/assets/res2.jpg"
+        <ResourceCardComponent imgUrl="../src/assets/res3.jpg"
             content="Reducing fleet downtime: Digital tools and strategies webinar" />
-        <ResourceCardComponent imgUrl="@/assets/res1.jpg"
+        <ResourceCardComponent imgUrl="../src/assets/res1.jpg"
             content="What real-time fleet tracking means for last-mile fleets" />
-
     </div>
 
 </template>
