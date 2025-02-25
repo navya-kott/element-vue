@@ -65,14 +65,16 @@ const handleSignup = (event: Event) => {
                     <BrandsDropdownComponent />
                 </li>
 
-                <li class="nav-item">
-                    <button type="button" class="btn btn-success btn-sm" data-bs-target="#contactModal"
-                        data-bs-toggle="modal">Contact us</button>
-                </li>
-                <li class="ms-lg-auto mt-1">
+                <div class="d-flex flex-column flex-lg-row ms-lg-auto align-items-center mt-2 mt-lg-0">
+                    <button type="button" class="btn btn-success btn-sm me-lg-2 mb-2 mb-lg-0"
+                        data-bs-target="#contactModal" data-bs-toggle="modal">
+                        Contact us
+                    </button>
                     <button type="button" class="btn btn-success btn-sm" data-bs-target="#signupModal"
-                        data-bs-toggle="modal">Signup</button>
-                </li>
+                        data-bs-toggle="modal">
+                        Signup
+                    </button>
+                </div>
             </ul>
 
         </div>
@@ -115,7 +117,7 @@ const handleSignup = (event: Event) => {
     </div>
 
 
-    <div class="modal fade" tabindex="-1" id="contactModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
+    <div class="modal" tabindex="-1" id="contactModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-5">
 
@@ -137,8 +139,8 @@ const handleSignup = (event: Event) => {
                         <input type="text" class="form-control" id="exampleInputPassword1" required>
                     </div>
 
-                    <button class="btn btn-success" id="exampleModal" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">Submit</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" data-bs-dismiss="modal" >Submit</button>
                 </form>
 
             </div>
@@ -146,13 +148,14 @@ const handleSignup = (event: Event) => {
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-body">
-                    We will ping you soon
+                    We will ping you soon :)
                 </div>
-                >
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+
             </div>
         </div>
     </div>
