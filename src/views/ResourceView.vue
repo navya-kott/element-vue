@@ -22,7 +22,7 @@ import ResourceCardComponent from '@/components/ResourceCardComponent.vue';
 
 </template>
 
-<style scope>
+<style scoped>
 .resource-section {
     font-size: 2.7rem;
     font-weight: bold;

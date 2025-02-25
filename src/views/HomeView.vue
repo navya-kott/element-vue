@@ -5,13 +5,12 @@ const router=useRouter()
 
 const goServices = () => {
     router.push({
-        name: "service"
+        name: "vehicle"
     })
 }
 </script>
 
 <template>
-
     <div class="row mt-5">
         <div class="col-md-6">
             <h1 class="hero-title">Empowering your fleet to be safer, smarter and more productive</h1>

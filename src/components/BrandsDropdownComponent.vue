@@ -20,8 +20,7 @@ onMounted(async () => {
 <template>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <li v-for="item in brands" :key="item._id">
-            
-            <a class="dropdown-item" href="#">{{ item._id }}</a>
+            <router-link :to="{path:'/vehicle',query:{id:item._id}}" class="dropdown-item" >{{ item._id }}</router-link>
         </li>
     </ul>
 </template>
