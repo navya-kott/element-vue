@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import BrandsDropdownComponent from './components/BrandsDropdownComponent.vue';
-import { onMounted, ref } from 'vue';
-import { Toast } from 'bootstrap';
-
+import SignupComponent from './components/SignupComponent.vue';
 const router = useRouter()
 
 const goResource = () => {
@@ -14,24 +12,7 @@ const goHome = () => {
     router.push({ name: "home" })
 }
 
-const toastElement = ref<HTMLElement | null>(null);
-let toastInstance: Toast | null = null;
 
-onMounted(() => {
-    if (toastElement.value) {
-        toastInstance = new Toast(toastElement.value);
-    }
-});
-
-const showToast = () => {
-    toastInstance?.show();
-};
-
-
-const handleSignup = (event: Event) => {
-    event.preventDefault();
-    showToast();
-};
 </script>
 
 <template>
@@ -82,40 +63,40 @@ const handleSignup = (event: Event) => {
 
     </nav>
     <!-- signup -->
+    <SignupComponent />
 
-    <div class="modal fade" tabindex="-1" id="signupModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
+    <!-- <div class="modal fade" tabindex="-1" id="signupModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-5">
 
-                <form class="needs-validation" novalidate @submit="handleSignup">
+                <form class="needs-validation">
 
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <label for="signupName" class="form-label">Name</label>
+                        <input v-model="details.name" type="text" class="form-control" id="signupName" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email </label>
+                        <input v-model="details.email" type="email" class="form-control" id="signupEmail"
+                            aria-describedby="emailHelp" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="signupPaswword" class="form-label">Password</label>
+                        <input v-model="details.password" type="password" class="form-control" id="signupPaswword"
                             required>
                     </div>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please provide a valid data.
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mobile</label>
-                        <input type="tel" class="form-control" id="exampleInputPassword1" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required>
-                    </div>
-
-                    <button class="btn btn-success" id="signupToast" data-bs-dismiss="modal">Signup</button>
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-success" id="signupToast" data-bs-dismiss="modal"
+                        @click="handleSignup">Signup</button>
                 </form>
 
             </div>
         </div>
-    </div>
+    </div> -->
 
+    <!-- contact us -->
 
     <div class="modal" tabindex="-1" id="contactModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -125,7 +106,7 @@ const handleSignup = (event: Event) => {
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="contactUsEmail" aria-describedby="emailHelp"
                             required>
                     </div>
                     <div class="valid-feedback">
@@ -136,11 +117,12 @@ const handleSignup = (event: Event) => {
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Message</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" required>
+                        <input type="text" class="form-control" id="contactUsMessage" required>
                     </div>
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
 
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" data-bs-dismiss="modal" >Submit</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        data-bs-dismiss="modal">Submit</button>
                 </form>
 
             </div>
@@ -161,26 +143,6 @@ const handleSignup = (event: Event) => {
     </div>
 
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-5 ">
-        <div id="signupToast" class="toast" ref="toastElement" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body">Welcome to the Element :)</div>
-        </div>
-    </div>
-
     <RouterView />
 </template>
 
-<style scoped>
-.modal-content {
-    background: rgba(8, 83, 54, 0.9);
-}
-
-.modal-content div {
-    color: #bdddda;
-}
-
-.toast-body {
-    color: rgba(241, 241, 241, 0.9);
-    background-color: rgb(13, 101, 112);
-}
-</style>

@@ -1,3 +1,16 @@
 body {
     background-color: #f6f6f7;
   }
+
+  .modal-content {
+    background: rgba(8, 83, 54, 0.9);
+}
+
+.modal-content div {
+    color: #bdddda;
+}
+
+.toast-body {
+    color: rgba(241, 241, 241, 0.9);
+    background-color: rgb(13, 101, 112);
+}
