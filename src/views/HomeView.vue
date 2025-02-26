@@ -13,8 +13,8 @@ const userData=userDetailsStore()
 
 <template>
 
-    <h1 v-if="userData.name!=='unknown'">Hey {{ userData.name }}</h1>
-    <h1 v-else>Hey</h1>
+    <h2 v-if="userData.name!=='unknown'">Hey {{ userData.name }},</h2>
+    <h2 v-else>Hey,</h2>
 
 
     <div class="row mt-5">
