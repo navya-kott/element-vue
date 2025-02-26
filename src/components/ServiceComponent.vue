@@ -10,10 +10,17 @@ defineProps({
 <template>
 
     <div class="container">
-        <div class="box left"><p class=" fs-5 " href="#">{{content}}
-        </p></div>
-        <div class="box right"><p class=" fs-5 " href="#">{{content}}
-        </p></div>
+        <div v-if="alignmentLeft" class="box left">
+            <img class="d-flex justify-content-center align-item-center img-fluid " :src="imgUrl" alt="">
+            <p class="mt-3 fs-5 ">{{ content }}
+            </p>
+        </div>
+
+        <div v-else class="box right">
+            <img class="d-flex justify-content-center align-item-center img-fluid " :src="imgUrl" alt="">
+            <p class="mt-3 fs-5 ">{{ content }}
+            </p>
+        </div>
 
     </div>
 </template>
@@ -28,19 +35,23 @@ defineProps({
 }
 
 .box {
-    padding: 20rem;
+    padding: 2rem;
     color: white;
-    max-width: 50%;
+    max-width: 60%;
     border-radius: 8px;
 }
 
 .left {
-    background-color: #3498db;
+    margin-top: 1rem;
+    background-color: #93b6ce;
     align-self: flex-start;
+    align-items: center;
+
 }
 
 .right {
-    background-color: #2ecc71;
+    margin-top: 1rem;
+    background-color: #97caad;
     align-self: flex-end;
 }
 </style>
