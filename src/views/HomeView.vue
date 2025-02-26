@@ -5,7 +5,7 @@ const router=useRouter()
 
 const goServices = () => {
     router.push({
-        name: "vehicle"
+        name: "service"
     })
 }
 </script>

@@ -65,37 +65,6 @@ const goHome = () => {
     <!-- signup -->
     <SignupComponent />
 
-    <!-- <div class="modal fade" tabindex="-1" id="signupModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content p-5">
-
-                <form class="needs-validation">
-
-                    <div class="mb-3">
-                        <label for="signupName" class="form-label">Name</label>
-                        <input v-model="details.name" type="text" class="form-control" id="signupName" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="signupEmail" class="form-label">Email </label>
-                        <input v-model="details.email" type="email" class="form-control" id="signupEmail"
-                            aria-describedby="emailHelp" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="signupPaswword" class="form-label">Password</label>
-                        <input v-model="details.password" type="password" class="form-control" id="signupPaswword"
-                            required>
-                    </div>
-                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-success" id="signupToast" data-bs-dismiss="modal"
-                        @click="handleSignup">Signup</button>
-                </form>
-
-            </div>
-        </div>
-    </div> -->
-
     <!-- contact us -->
 
     <div class="modal" tabindex="-1" id="contactModal" aria-labelledby="contactToggleLabel" aria-hidden="true">
