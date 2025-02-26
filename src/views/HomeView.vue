@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { userDetailsStore } from '@/stores/user';
+import { useUserStore } from '@/stores/user';
+import { useAuthStore } from '@/stores/auth';
 const router=useRouter()
 
 const goServices = () => {
@@ -8,12 +9,13 @@ const goServices = () => {
         name: "service"
     })
 }
-const userData=userDetailsStore()
+const userData=useUserStore()
+const authData=useAuthStore()
 </script>
 
 <template>
 
-    <h2 v-if="userData.name!=='unknown'">Hey {{ userData.name }},</h2>
+    <h2 v-if="authData.token">Hey {{ userData.name }},</h2>
     <h2 v-else>Hey,</h2>
 
 

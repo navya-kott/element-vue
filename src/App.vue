@@ -3,7 +3,9 @@ import { useRouter } from 'vue-router';
 import BrandsDropdownComponent from './components/BrandsDropdownComponent.vue';
 import SignupComponent from './components/SignupComponent.vue';
 const router = useRouter()
+import { useAuthStore } from './stores/auth';
 
+const authData=useAuthStore()
 const goResource = () => {
     router.push({ name: "resource" })
 }
@@ -50,10 +52,12 @@ const goHome = () => {
                         data-bs-target="#contactModal" data-bs-toggle="modal">
                         Contact us
                     </button>
-                    <button type="button" class="btn btn-success btn-sm" data-bs-target="#signupModal"
+                        <button v-if="!authData.token" type="button" class="btn btn-success btn-sm" data-bs-target="#signupModal"
                         data-bs-toggle="modal">
                         Signup
                     </button>
+                   
+                  
                 </div>
             </ul>
 

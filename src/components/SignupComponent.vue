@@ -3,9 +3,16 @@ import { ref, onMounted } from "vue";
 import { Modal, Toast } from 'bootstrap';
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
-import { userDetailsStore } from "@/stores/user";
+import { useUserStore } from "@/stores/user";
+import { useAuthStore } from "@/stores/auth";
+import api from "@/config/axios";
 
-const userDetails=userDetailsStore()
+// pinia
+const userDetails = useUserStore()
+const authData = useAuthStore()
+
+//VALIDATION 
+
 const validationSchema = yup.object({
     name: yup.string().required("Name is required").min(3, "Name must be at least 3 characters"),
     email: yup.string().email("Invalid email").required("Email is required"),
@@ -47,14 +54,11 @@ const closeModal = () => {
 
 const handleSignup = handleSubmit(async () => {
     try {
-        await fetch('http://localhost:3000/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name: name.value, email: email.value, password: password.value })
-        });
-        userDetails.updateName( name.value)
+        const response: any =  await api.post("/user",{ name: name.value, email: email.value, password: password.value })
+
+        userDetails.updateName(response.data.data.name)
+        authData.setToken(response.data.token)
+
         resetForm()
         closeModal();
         showToast();
@@ -63,6 +67,7 @@ const handleSignup = handleSubmit(async () => {
         console.log("Error:", error);
     }
 });
+
 </script>
 
 <template>
