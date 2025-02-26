@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-
+import { userDetailsStore } from '@/stores/user';
 const router=useRouter()
 
 const goServices = () => {
@@ -8,9 +8,15 @@ const goServices = () => {
         name: "service"
     })
 }
+const userData=userDetailsStore()
 </script>
 
 <template>
+
+    <h1 v-if="userData.name!=='unknown'">Hey {{ userData.name }}</h1>
+    <h1 v-else>Hey</h1>
+
+
     <div class="row mt-5">
         <div class="col-md-6">
             <h1 class="hero-title">Empowering your fleet to be safer, smarter and more productive</h1>

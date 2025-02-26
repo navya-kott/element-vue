@@ -3,9 +3,9 @@ import { ref, onMounted } from "vue";
 import { Modal, Toast } from 'bootstrap';
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
+import { userDetailsStore } from "@/stores/user";
 
-
-
+const userDetails=userDetailsStore()
 const validationSchema = yup.object({
     name: yup.string().required("Name is required").min(3, "Name must be at least 3 characters"),
     email: yup.string().email("Invalid email").required("Email is required"),
@@ -54,6 +54,7 @@ const handleSignup = handleSubmit(async () => {
             },
             body: JSON.stringify({ name: name.value, email: email.value, password: password.value })
         });
+        userDetails.updateName( name.value)
         resetForm()
         closeModal();
         showToast();
@@ -89,7 +90,7 @@ const handleSignup = handleSubmit(async () => {
                     </div>
 
                     <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Signup</button>
+                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Signup</button>
                 </form>
             </div>
         </div>

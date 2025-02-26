@@ -12,7 +12,6 @@ const goHome = () => {
     router.push({ name: "home" })
 }
 
-
 </script>
 
 <template>
