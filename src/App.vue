@@ -2,10 +2,11 @@
 import { useRouter } from 'vue-router';
 import BrandsDropdownComponent from './components/BrandsDropdownComponent.vue';
 import SignupComponent from './components/SignupComponent.vue';
+import CarRegistrationComponent from "./components/CarRegistrationComponent.vue"
 const router = useRouter()
 import { useAuthStore } from './stores/auth';
 
-const authData=useAuthStore()
+const authData = useAuthStore()
 const goResource = () => {
     router.push({ name: "resource" })
 }
@@ -33,10 +34,7 @@ const goHome = () => {
                     <a class="nav-link active" href="#" @click="goHome">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" @click="goResource">Resource</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" @click="goResource">Resource</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -52,12 +50,14 @@ const goHome = () => {
                         data-bs-target="#contactModal" data-bs-toggle="modal">
                         Contact us
                     </button>
-                        <button v-if="!authData.token" type="button" class="btn btn-success btn-sm" data-bs-target="#signupModal"
-                        data-bs-toggle="modal">
+                    <button v-if="authData.token" type="button" class="btn btn-success btn-sm me-lg-2 mb-2 mb-lg-0"
+                        data-bs-target="#carModal" data-bs-toggle="modal">
+                        Add car
+                    </button>
+                    <button v-if="!authData.token" type="button" class="btn btn-success btn-sm"
+                        data-bs-target="#signupModal" data-bs-toggle="modal">
                         Signup
                     </button>
-                   
-                  
                 </div>
             </ul>
 
@@ -67,6 +67,7 @@ const goHome = () => {
     </nav>
     <!-- signup -->
     <SignupComponent />
+    <CarRegistrationComponent />
 
     <!-- contact us -->
 
@@ -117,4 +118,3 @@ const goHome = () => {
 
     <RouterView />
 </template>
-

@@ -8,7 +8,7 @@ const brand = route.query.id
 const data: any = ref([])
 onMounted(async () => {
     try {
-        const res = await fetch(`http://localhost:3000/cars/brand?name=${brand}`);
+        const res = await fetch(`http://localhost:3000/car/brand?name=${brand}`);
         const response = await res.json()
         data.value = response.data
     } catch (e) {

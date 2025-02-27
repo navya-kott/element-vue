@@ -5,7 +5,7 @@ const brands = ref<any[]>([]);
 
 onMounted(async () => {
     try {
-        const res = await fetch("http://localhost:3000/cars");
+        const res = await fetch("http://localhost:3000/car");
        const response= await res.json()
        brands.value=response.data
 
