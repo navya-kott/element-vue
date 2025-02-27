@@ -15,6 +15,10 @@ const goHome = () => {
     router.push({ name: "home" })
 }
 
+const goCarDetails = () => {
+    router.push({ name: "car-details" })
+}
+
 </script>
 
 <template>
@@ -35,6 +39,9 @@ const goHome = () => {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" @click="goResource">Resource</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" @click="goCarDetails">Your cars</a>
                 </li>
 
                 <li class="nav-item dropdown">

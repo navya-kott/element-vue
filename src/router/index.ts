@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import ResourceView from '@/views/ResourceView.vue'
 import ServiceView from '@/views/ServiceView.vue'
 import VehicleView from '@/views/VehicleView.vue'
+import CarDetailsView from '@/views/CarDetailsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/vehicle",
       name: "vehicle",
       component: VehicleView
+    },
+    {
+      path: "/car-details",
+      name: "car-details",
+      component: CarDetailsView
     },
   // {
   //     path: "/about",

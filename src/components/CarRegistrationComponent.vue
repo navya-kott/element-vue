@@ -28,18 +28,12 @@ const handleFileUpload = (event: any) => {
 const handleRegistration = handleSubmit(async (value: any) => {
     try {
         const formData = new FormData();
-
         Object.keys(value).forEach((key) => {
             formData.append(key, value[key]);
         });
-
-        // if (image.value) formData.append("image", value.image);
-
-        const response = await api.post("/car", formData, {
+        await api.post("/car", formData, {
             headers: { "Content-Type": "multipart/form-data", }
         },)
-        console.log("fffffffffff", response);
-
         resetForm()
     } catch (error) {
         console.log("error", error);
