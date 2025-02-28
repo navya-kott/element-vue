@@ -13,7 +13,7 @@ number:String
 <template>
     <div class="row vehicles mt-5">
         <div class="col-6">
-            <img src="../assets/res1.jpg" class="w-75" alt="...">
+            <img :src="image" class="w-75" alt="...">
         </div>
         <div class="col-6">
             <p class="resource-section"> {{model}} </p>

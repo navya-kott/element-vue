@@ -9,7 +9,7 @@ const validationSchema = yup.object({
     number: yup.string().required("Car number is required"),
     year: yup.string().required("Car model year is required"),
     place: yup.string().required("Place is required"),
-    image: yup.string().required("Car image is required")
+    file: yup.string().required("Car image is required")
 
 })
 const { handleSubmit, resetForm } = useForm({ validationSchema })
@@ -21,7 +21,7 @@ const { value: place } = useField("place");
 const { value: number } = useField("number");
 const { value: file } = useField("file")
 
-const handleFileUpload = (event: any) => {
+const handleFileUpload = (event: any) => {    
     file.value = event.target.files[0]
 }
 

@@ -2,15 +2,20 @@
 import CarDetailsComponent from "@/components/CarDetailsComponent.vue";
 import api from "@/config/axios";
 import { onMounted, ref } from "vue"
-import { useRoute } from "vue-router";
-const route = useRoute()
 
 const data: any = ref([])
+let base64String:any
 onMounted(async () => {
     try {
-        const response = await api.get(`/car/67c051bf22fa1f185cef2e13`);
+        const response = await api.get(`/car/list`);
         data.value = response.data
+        const buffer = new Uint8Array(data.value.data.image);
+    
+     base64String= btoa(
+      new Uint8Array(buffer).reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
 
+    const img = `data:image/png;base64,${base64String}`;
     } catch (error) {
         console.log("File fetch error:", error);
     }
@@ -19,9 +24,9 @@ onMounted(async () => {
 </script>
 
 
-<template >
-    <div v-for="item in data">
-        <CarDetailsComponent :model=item.model :year=item.year />
+<template>
+    <div v-for="item in data.data">
+        <CarDetailsComponent :model=item.model :year=item.year image=" `data:image/png;base64,${base64String}`" />
     </div>
 </template>
 
